@@ -15,7 +15,7 @@ public:
 
     // Insertion
     void push(const T& item) override {
-        list.addTail(item);
+        list.addHead(item);
     }
 
     // Deletion
@@ -23,8 +23,8 @@ public:
         if (list.getHead() == nullptr) {
             throw std::runtime_error("X");
         }
-        T temp = list.getTail()->data;
-        list.removeTail();
+        T temp = list.getHead()->data;
+        list.getHead();
         return temp;
     }
 
