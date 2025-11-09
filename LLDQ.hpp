@@ -62,10 +62,10 @@ public:
     }
 
     void PrintForward() {
-        return list.PrintForward();
+        return list.printForward();
     }
 
     void PrintReverse() {
-        return list.PrintReverse();
+        return list.printReverse();
     }
 };
