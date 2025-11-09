@@ -109,10 +109,10 @@ public:
             throw std::runtime_error("X"); // if empty
         }
         T temp = array_[curr_size_ - 1];
+        curr_size_ -= 1;
         if (curr_size_ <= capacity_/4 && capacity_ >= 2) {
             newSize(capacity_/2);
         }
-        curr_size_ -= 1;
         return temp;
     }
 
@@ -129,7 +129,7 @@ public:
     }
 
     void newSize(size_t n) {
-        if (!(n <= curr_size_)) { // as long as new size isn't less than current size
+        if (n > curr_size_) {
             T* temp = new T[n];
             for (size_t i = 0; i < curr_size_; i++) {
                 temp[i] = array_[i];
