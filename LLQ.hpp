@@ -30,6 +30,9 @@ public:
 
     // Access
     T peek() const override {
+        if (list.getHead() == nullptr) {
+            throw std::runtime_error("X");
+        }
         return list.getHead()->data;
     }
 
@@ -39,11 +42,11 @@ public:
     }
 
     void PrintForward() {
-        list.PrintForward();
+        list.printForward();
     }
 
     void PrintReverse() {
-        list.PrintReverse();
+        list.printReverse();
     }
 
 };
