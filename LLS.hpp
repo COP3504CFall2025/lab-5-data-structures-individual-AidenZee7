@@ -24,7 +24,7 @@ public:
             throw std::runtime_error("X");
         }
         T temp = list.getHead()->data;
-        list.getHead();
+        list.removeHead();
         return temp;
     }
 
