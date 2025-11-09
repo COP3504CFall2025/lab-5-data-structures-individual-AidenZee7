@@ -11,17 +11,41 @@ private:
     LinkedList<T> list;
 public:
     // Constructor
-    LLS();
+    LLS() : list() {}
 
     // Insertion
-    void push(const T& item) override;
+    void push(const T& item) override {
+        list.addTail(item);
+    }
 
     // Deletion
-    T pop() override;
+    T pop() override {
+        if (list.getHead() == nullptr) {
+            throw std::runtime_error("X");
+        }
+        T temp = list.getTail()->data;
+        list.removeTail();
+        return temp;
+    }
 
     // Access
-    T peek() const override;
+    T peek() const override {
+        if (list.getHead() == nullptr) {
+            throw std::runtime_error("X");
+        }
+        return list.getHead()->data;
+    }
 
     //Getters
-    std::size_t getSize() const noexcept override;
+    std::size_t getSize() const noexcept override {
+        return static_cast<std::size_t>(list.getCount());
+    }
+
+    void PrintForward() {
+        list.PrintForward();
+    }
+
+    void PrintReverse() {
+        list.PrintReverse();
+    }
 };
