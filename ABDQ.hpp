@@ -101,7 +101,7 @@ public:
 
     void pushBack(const T& item) override {
         ensureCapacity();
-        data_[(capacity_ + back_ + 1) % capacity_] = item;
+        data_[(capacity_ + back_) % capacity_] = item;
         back_ = (capacity_ + back_ + 1) % capacity_;
         size_++;
         shrinkIfNeeded();
@@ -122,8 +122,8 @@ public:
         if (size_ == 0) {
             throw std::runtime_error("X");
         }
+        back_ = (back_ + capacity_ - 1) % capacity_;
         T temp = data_[back_];
-        back_ = (capacity_ + back_ - 1) % capacity_;
         shrinkIfNeeded();
         return temp;
     }
