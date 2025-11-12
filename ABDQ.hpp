@@ -96,7 +96,7 @@ public:
         data_[(capacity_ + front_ - 1) % capacity_] = item;
         front_ = (capacity_ + front_ - 1) % capacity_;
         size_++;
-        shrinkIfNeeded();
+        //shrinkIfNeeded();
     }
 
     void pushBack(const T& item) override {
@@ -104,7 +104,7 @@ public:
         data_[(capacity_ + back_) % capacity_] = item;
         back_ = (capacity_ + back_ + 1) % capacity_;
         size_++;
-        shrinkIfNeeded();
+        //shrinkIfNeeded();
     }
 
     // Deletion
@@ -166,7 +166,7 @@ public:
                 temp[i] = data_[(front_ + i) % capacity_];
             }
             front_ = 0;
-            back_ = size_ - 1;
+            back_ = size_;
             capacity_ /= 2;
             delete[] data_;
             data_ = temp;
