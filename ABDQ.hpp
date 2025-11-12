@@ -28,7 +28,7 @@ public:
         capacity_ = other.capacity_;
         size_ = other.size_;
         front_ = other.front_;
-        back_ = other.back_;
+        back_ = other.size_;
         T* temp = new T[size_];
         for (size_t i = 0; i < size_; i++) {
             temp[i] = other.data_[(other.front_ + i) % capacity_];
@@ -114,8 +114,8 @@ public:
         }
         T temp = data_[front_];
         front_ = (front_ + 1) % capacity_;
-        shrinkIfNeeded();
         size_--;
+        shrinkIfNeeded();
         return temp;
     }
     T popBack() override {
@@ -124,6 +124,7 @@ public:
         }
         back_ = (back_ + capacity_ - 1) % capacity_;
         T temp = data_[back_];
+        size_--;
         shrinkIfNeeded();
         return temp;
     }
